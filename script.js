@@ -18,45 +18,54 @@ const toNight = document.getElementById("toNight");
 const nightScene = document.getElementById("night-scene");
 
 // Step 1: Envelope → click to open
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+
 envelope.addEventListener("click", () => {
-  envelope.classList.add("open");  // add class to trigger CSS
+  envelope.classList.add("open");
 });
 
+// Step 2: Letter "Next" → open Gallery
+const toGallery = document.getElementById("toGallery");
+const envelopeScene = document.getElementById("envelope-scene");
+const galleryScene = document.getElementById("gallery-scene");
 
-// Step 2: Letter → Gallery
-toGallery.addEventListener("click", (e) => {
-  e.stopPropagation();
-  document.getElementById("envelope-scene").classList.add("hidden");
-  galleryScene.classList.remove("hidden");
+toGallery.addEventListener("click", () => {
+  envelopeScene.classList.add("hidden");  // hide envelope
+  galleryScene.classList.remove("hidden"); // show gallery
 });
 
-// Step 3: Gallery → Question
+// Step 3: Gallery "Next" → Question
+const closeGallery = document.getElementById("closeGallery");
+const questionScene = document.getElementById("question-scene");
+
 closeGallery.addEventListener("click", () => {
   galleryScene.classList.add("hidden");
   questionScene.classList.remove("hidden");
 });
 
-// No button runaway effect
-noBtn.addEventListener("mousemove", (e) => {
-  const rect = noBtn.getBoundingClientRect();
-  const offsetX = e.clientX - (rect.left + rect.width / 2);
-  const offsetY = e.clientY - (rect.top + rect.height / 2);
-
-  // If mouse is too close, move the button away
-  if (Math.abs(offsetX) < 80 && Math.abs(offsetY) < 50) {
-    const newX = (Math.random() - 0.5) * 400; // random X shift
-    const newY = (Math.random() - 0.5) * 200; // random Y shift
-    noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
-  }
-});
-
+// Step 4: Question "Yes" → Show Answer
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const answer = document.getElementById("answer");
 
 yesBtn.addEventListener("click", () => {
   answer.classList.remove("hidden");
 });
 
-// Step 4: To Night Sky
+// Step 5: Question "No" → runaway button
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.floor(Math.random() * 200) - 100;
+  const y = Math.floor(Math.random() * 200) - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// Step 6: Answer "OK" → Night Scene
+const toNight = document.getElementById("toNight");
+const nightScene = document.getElementById("night-scene");
+
 toNight.addEventListener("click", () => {
   questionScene.classList.add("hidden");
   nightScene.classList.remove("hidden");
 });
+
