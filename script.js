@@ -1,6 +1,6 @@
 const heartBtn = document.getElementById("heartBtn");
 const envelope = document.getElementById("envelope");
-const letter = document.getElementById("letter");
+const letter = document.querySelector(".letter");
 const closeLetter = document.getElementById("closeLetter");
 
 // Show envelope
@@ -9,14 +9,17 @@ heartBtn.addEventListener("click", () => {
   envelope.classList.remove("hidden");
 });
 
-// Open envelope to show letter
+// Click envelope to slide out letter
 envelope.addEventListener("click", () => {
-  envelope.classList.add("hidden");
-  letter.classList.remove("hidden");
+  letter.classList.add("show");
 });
 
 // Close letter
-closeLetter.addEventListener("click", () => {
-  letter.classList.add("hidden");
-  alert("Next step: We'll add Gallery → Love Question → Starry Night 🌌");
+closeLetter.addEventListener("click", (e) => {
+  e.stopPropagation(); // stop triggering envelope click
+  letter.classList.remove("show");
+  setTimeout(() => {
+    envelope.classList.add("hidden");
+    alert("Next → we can add Gallery 📸 or Love Question 💕");
+  }, 600);
 });
