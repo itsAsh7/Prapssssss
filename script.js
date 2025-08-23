@@ -20,7 +20,7 @@ const nightScene = document.getElementById("night-scene");
 // Step 1: Envelope → click to open
 envelope.addEventListener("click", () => {
   topFlap.style.transform = "rotateX(160deg)";
-  letter.style.transform = "translateY(-100px)";
+ letter.style.transform = "translate(-50%, -180px)";
 });
 
 // Step 2: Letter → Gallery
