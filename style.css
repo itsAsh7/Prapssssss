@@ -1,77 +1,124 @@
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Poppins', sans-serif;
+  background: #b784db;
   overflow: hidden;
-}
-
-.hidden {
-  display: none;
-}
-
-#heart-btn {
-  font-size: 4rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-.envelope-container {
-  position: relative;
   text-align: center;
+  color: white;
 }
+.hidden { display: none; }
+.scene { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 
-.envelope {
-  width: 250px;
-  cursor: pointer;
-  transition: transform 1s ease;
-}
-
-.envelope.opened {
-  transform: rotateX(180deg);
-}
-
-.envelope-text {
+/* Envelope */
+.envelope { position: relative; cursor: pointer; }
+.back { width: 250px; height: 200px; background: #6247aa; }
+.front {
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.8rem;
-  color: #5a2d22;
-  font-weight: bold;
+  border-right: 130px solid #815ac0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  height: 0; width: 0; top: 0; left: 120px; z-index: 3;
 }
-
+.front:before {
+  content: ""; position: absolute;
+  border-left: 130px solid #815ac0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  top: -100px; left: -120px;
+}
+.front:after {
+  content: ""; position: absolute;
+  border-bottom: 105px solid #7251b5;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  top: -5px; left: -120px;
+}
+.top {
+  position: absolute;
+  border-top: 105px solid #9163cb;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  top: 0;
+  transform-origin: top;
+  transition: 0.5s;
+}
 .letter {
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  text-align: center;
-  transition: top 1.2s ease;
+  background: white;
+  width: 230px; height: auto;
+  top: 10px; left: 10px;
+  padding: 10px; border-radius: 8px;
+  transform: translateY(0);
+  transition: transform 0.5s;
+  z-index: 2; color: black;
 }
-
-.letter.show {
-  top: -20%;
-}
-
-.letter h2 {
+.for-praps {
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
   font-family: 'Great Vibes', cursive;
-  margin-bottom: 10px;
-  color: #e91e63;
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 0 0 8px #ff4b6e, 0 0 15px #ff4b6e;
+}
+.letter button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #ff4b6e;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.letter button:hover { background: #e6375c; }
+
+/* Gallery */
+#gallery-scene { background: #222; }
+.gallery { display: flex; gap: 10px; margin: 20px; }
+.gallery img {
+  width: 150px; height: 150px;
+  object-fit: cover;
+  border: 3px solid white;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.gallery img:hover { transform: scale(1.1) rotate(2deg); }
+#gallery-scene button { margin-top: 20px; }
+
+/* Question */
+#question-scene { background: #000; }
+#question-scene h1 { font-size: 3rem; margin-bottom: 30px; }
+.buttons { display: flex; gap: 20px; }
+#yesBtn, #noBtn {
+  padding: 12px 24px;
+  border: none; border-radius: 8px;
+  font-size: 1.2rem; cursor: pointer;
+}
+#yesBtn { background: #4caf50; color: white; }
+#noBtn { background: #f44336; color: white; position: relative; }
+
+/* Answer */
+#answer { margin-top: 20px; }
+#answer h2 { color: #ff4b6e; }
+
+/* Night sky */
+#night-scene { background: black; position: relative; }
+.stars {
+  width: 100%; height: 100%;
+  background: url('https://i.ibb.co/7Wym3rK/stars.png') repeat;
+  animation: moveStars 60s linear infinite;
+}
+@keyframes moveStars {
+  from { background-position: 0 0; }
+  to { background-position: 0 -1000px; }
+}
+.final-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0 0 15px #ff4b6e;
 }
