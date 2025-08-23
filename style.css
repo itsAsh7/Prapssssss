@@ -46,21 +46,29 @@ body {
 .letter {
   position: absolute;
   background: white;
-  width: 230px; height: auto;
-  top: 10px; left: 10px;
-  padding: 10px; border-radius: 8px;
+  width: 200px;       /* smaller width */
+  height: 140px;      /* smaller height */
+  top: 20px; left: 25px;
+  padding: 12px;
+  border-radius: 8px;
   transform: translateY(0);
   transition: transform 0.5s;
-  z-index: 2; color: black;
+  z-index: 2;
+  color: black;
+  font-size: 14px;    /* make text fit */
+  overflow: hidden;   /* prevents spill */
 }
+
 .for-praps {
   position: absolute;
-  top: 40%; left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 30px;       /* moves text down on envelope */
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Great Vibes', cursive;
-  font-size: 28px;
+  font-size: 24px;
   color: #fff;
-  text-shadow: 0 0 8px #ff4b6e, 0 0 15px #ff4b6e;
+  text-shadow: 0 0 6px #ff4b6e, 0 0 12px #ff4b6e;
+  z-index: 5;         /* ensure it shows above */
 }
 .letter button {
   margin-top: 10px;
