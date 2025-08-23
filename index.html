@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Praps 💌</title>
+  <title>For My Praps</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Heart Button -->
-  <div class="heart-container">
-    <button id="heartBtn" class="heart">❤️</button>
+  <div id="start-screen">
+    <button id="heart-btn">❤️</button>
   </div>
 
-  <!-- Envelope -->
-  <div id="envelope" class="envelope hidden">
-    <div class="flap"></div>
-    <div class="pocket"></div>
-    <div class="letter">
-      <p>My dearest Praps, <br><br>
-      From the moment you stepped into my life, everything became more beautiful.  
-      You’re my smile, my calm, and my forever. 💖<br><br>
-      Always yours,<br>Me</p>
-      <button id="closeLetter">Close 💌</button>
+  <!-- Envelope Scene -->
+  <div id="envelope-scene" class="hidden">
+    <div class="envelope-container">
+      <img src="envelope.png" alt="Envelope" class="envelope" />
+      <div class="letter hidden" id="letter">
+        <h2>My Love Letter 💌</h2>
+        <p>
+          From the moment I met you, my heart found its home.
+          You are my smile, my happiness, my forever. ❤️
+        </p>
+        <button id="close-letter">Close</button>
+      </div>
+      <div class="envelope-text">For my Praps</div>
     </div>
   </div>
 
