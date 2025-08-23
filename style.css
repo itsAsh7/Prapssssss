@@ -101,12 +101,19 @@ body {
 /* For my Praps text */
 .for-praps {
   display: block;
-  margin-top: 12px; /* just below envelope */
+  margin-top: 15px; /* small gap below envelope */
   font-family: 'Great Vibes', cursive;
-  font-size: 26px;
+  font-size: 28px;
   color: #fff;
   text-shadow: 0 0 6px #ff4b6e, 0 0 12px #ff4b6e;
+  animation: fadeIn 1.2s ease-in-out;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 
 .letter button {
