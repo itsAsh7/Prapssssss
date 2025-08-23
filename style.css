@@ -67,34 +67,33 @@ body {
 }
 
 
-/* Letter stays hidden inside */
+/* Letter hidden inside envelope */
 .letter {
   position: absolute;
   background: white;
   width: 220px;
   height: auto;
-  top: 60%;   /* pushes it way down */
+  top: 100%;   /* start fully inside */
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
   padding: 15px;
   border-radius: 8px;
-  transition: transform 0.8s ease-in-out;
-  z-index: 1; /* below flap */
+  transition: top 0.8s ease-in-out, opacity 0.5s;
+  z-index: 1;
   color: black;
   font-size: 15px;
   text-align: center;
   opacity: 0;
 }
 
-
-/* Show letter when envelope opens */
+/* When envelope opens */
 .envelope.open .top {
   transform: rotateX(180deg);
 }
 .envelope.open .letter {
-  top: -40px;   /* pull it way above envelope */
+  top: -40px;   /* slides up out of envelope */
   opacity: 1;
-  z-index: 5;   /* above flaps */
+  z-index: 5;
 }
 
 
