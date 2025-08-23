@@ -1,25 +1,30 @@
-const heartBtn = document.getElementById("heartBtn");
-const envelope = document.getElementById("envelope");
-const letter = document.querySelector(".letter");
-const closeLetter = document.getElementById("closeLetter");
+const heartBtn = document.getElementById("heart-btn");
+const startScreen = document.getElementById("start-screen");
+const envelopeScene = document.getElementById("envelope-scene");
+const envelope = document.querySelector(".envelope");
+const letter = document.getElementById("letter");
+const closeLetterBtn = document.getElementById("close-letter");
 
-// Show envelope
 heartBtn.addEventListener("click", () => {
-  document.querySelector(".heart-container").classList.add("hidden");
-  envelope.classList.remove("hidden");
+  startScreen.classList.add("hidden");
+  envelopeScene.classList.remove("hidden");
 });
 
-// Click envelope to slide out letter
+// Open envelope and slide out letter
 envelope.addEventListener("click", () => {
-  letter.classList.add("show");
+  envelope.classList.add("opened");
+  setTimeout(() => {
+    letter.classList.remove("hidden");
+    setTimeout(() => letter.classList.add("show"), 100);
+  }, 600);
 });
 
 // Close letter
-closeLetter.addEventListener("click", (e) => {
-  e.stopPropagation(); // stop triggering envelope click
+closeLetterBtn.addEventListener("click", () => {
   letter.classList.remove("show");
   setTimeout(() => {
-    envelope.classList.add("hidden");
-    alert("Next → we can add Gallery 📸 or Love Question 💕");
-  }, 600);
+    letter.classList.add("hidden");
+    // TODO: trigger gallery next
+    alert("Next: Gallery will appear here!");
+  }, 1000);
 });
