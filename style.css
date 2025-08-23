@@ -1,4 +1,4 @@
-/* Fonts & Basics */
+/* Basics */
 body {
   margin: 0;
   height: 100vh;
@@ -9,7 +9,6 @@ body {
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
 }
-
 .hidden { display: none; }
 
 /* Heart Button */
@@ -31,36 +30,54 @@ body {
 
 /* Envelope */
 .envelope {
-  width: 280px;
-  height: 180px;
   position: relative;
-  perspective: 1000px;
+  width: 300px;
+  height: 200px;
   cursor: pointer;
 }
-.envelope-front {
+.pocket {
+  width: 100%;
+  height: 100%;
   background: #fff;
   border: 2px solid #ff4b6e;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  position: relative;
+  z-index: 1;
 }
-.for-praps {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
-  color: #ff4b6e;
-  text-shadow: 0 0 10px rgba(255,75,110,0.6);
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0; 
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 100px solid #ff4b6e;
+  transform-origin: top;
+  transition: transform 0.5s;
+  z-index: 2;
+}
+.envelope:hover .flap {
+  transform: rotateX(180deg);
 }
 
-/* Letter */
+/* Letter inside envelope */
 .letter {
-  width: 320px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 280px;
+  height: auto;
   background: #fff;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   text-align: left;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  animation: fadeIn 1s ease-in-out;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+  z-index: 0;
 }
 .letter p {
   font-size: 1rem;
@@ -81,7 +98,7 @@ body {
 .letter button:hover {
   background: #e6375c;
 }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.letter.show {
+  transform: translateY(-120px);
+  opacity: 1;
 }
