@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Favorite Girl 💕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Music -->
+  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-love.mp3" loop></audio>
+
+  <!-- Entry Screen -->
+  <div id="entry-screen">
+    <button id="heart-button">❤️</button>
+  </div>
+
+  <!-- Envelope Screen -->
+  <div id="envelope-screen" class="hidden">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="letter">
+        <p>I have something special for you…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Love Letter Screen -->
+  <div id="letter-screen" class="hidden">
+    <div class="letter-box">
+      <p id="typewriter-text"></p>
+    </div>
+    <button id="gallery-btn">📸 Our Memories</button>
+    <button id="surprise-btn">🎁 Tap for a Surprise</button>
+  </div>
+
+  <!-- Gallery Screen -->
+  <div id="gallery-screen" class="hidden">
+    <div class="gallery">
+      <img src="https://picsum.photos/200/200?random=1" alt="Memory 1">
+      <img src="https://picsum.photos/200/200?random=2" alt="Memory 2">
+      <img src="https://picsum.photos/200/200?random=3" alt="Memory 3">
+    </div>
+    <button id="close-gallery">Close</button>
+  </div>
+
+  <!-- Surprise Screen -->
+  <div id="surprise-screen" class="hidden">
+    <h2>💖 You’re my everything 💖</h2>
+  </div>
+
+  <!-- Ending Screen -->
+  <div id="ending-screen" class="hidden">
+    <h1>Forever Yours 💕</h1>
+    <p>– Your Name</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
