@@ -11,67 +11,96 @@ body {
 .scene { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 
 /* Envelope */
-.envelope { position: relative; cursor: pointer; }
-.back { width: 250px; height: 200px; background: #6247aa; }
+.envelope {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.back {
+  width: 250px;
+  height: 200px; /* back to smaller so letter hides */
+  background: #6247aa;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 0 0 6px 6px;
+}
+
 .front {
   position: absolute;
   border-right: 130px solid #815ac0;
   border-top: 100px solid transparent;
   border-bottom: 100px solid transparent;
-  height: 0; width: 0; top: 0; left: 120px; z-index: 3;
+  height: 0; width: 0;
+  top: 0; left: 120px;
+  z-index: 3;
 }
 .front:before {
-  content: ""; position: absolute;
+  content: "";
+  position: absolute;
   border-left: 130px solid #815ac0;
   border-top: 100px solid transparent;
   border-bottom: 100px solid transparent;
   top: -100px; left: -120px;
 }
 .front:after {
-  content: ""; position: absolute;
-  border-bottom: 105px solid #7251b5;
+  content: "";
+  position: absolute;
+  border-bottom: 100px solid #7251b5;
   border-left: 125px solid transparent;
   border-right: 125px solid transparent;
-  top: -5px; left: -120px;
+  top: 0; left: -120px;
+  z-index: 4;
 }
+
+/* Top flap (animated) */
 .top {
   position: absolute;
-  border-top: 105px solid #9163cb;
+  border-top: 100px solid #9163cb;
   border-left: 125px solid transparent;
   border-right: 125px solid transparent;
-  top: 0;
+  top: 0; left: 0;
+  z-index: 5;
   transform-origin: top;
-  transition: 0.5s;
+  transition: transform 0.6s ease;
 }
+
+/* Letter stays hidden inside */
 .letter {
   position: absolute;
   background: white;
   width: 220px;
-  height: auto;
-  top: 25px;
+  top: 100%; /* completely hidden */
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translateX(-50%);
   padding: 15px;
   border-radius: 8px;
-  transition: transform 0.6s ease-in-out;
+  transition: top 0.8s ease-in-out, opacity 0.5s ease;
   z-index: 2;
   color: black;
   font-size: 15px;
   text-align: center;
+  opacity: 0;
 }
 
+/* Show letter when envelope opens */
+.envelope.open .top {
+  transform: rotateX(180deg);
+}
+.envelope.open .letter {
+  top: -20px; /* slide out */
+  opacity: 1;
+}
 
-
+/* For my Praps text */
 .for-praps {
-  position: absolute;
-  bottom: 15px;       /* just above bottom of envelope */
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  margin-top: 12px; /* just below envelope */
   font-family: 'Great Vibes', cursive;
-  font-size: 22px;
+  font-size: 26px;
   color: #fff;
   text-shadow: 0 0 6px #ff4b6e, 0 0 12px #ff4b6e;
-  z-index: 5;
 }
 
 
