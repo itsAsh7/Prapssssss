@@ -63,14 +63,16 @@ body {
 
 .for-praps {
   position: absolute;
-  top: 220px;   /* moves it below the envelope */
+  bottom: 15px;       /* just above bottom of envelope */
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Great Vibes', cursive;
-  font-size: 28px;
+  font-size: 22px;
   color: #fff;
   text-shadow: 0 0 6px #ff4b6e, 0 0 12px #ff4b6e;
+  z-index: 5;
 }
+
 
 .letter button {
   margin-top: 10px;
