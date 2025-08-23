@@ -3,33 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Praps</title>
+  <title>For My Praps 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Heart Button -->
-  <div id="start-screen">
-    <button id="heart-btn">❤️</button>
-  </div>
-
-  <!-- Envelope Scene -->
-<div class="envelope" id="envelope">
-  <div class="back"></div>
-  <div class="letter" id="letter">
-    <div class="text">
-      <p>
-        My dearest Praps, <br><br>
-        You are the smile in my heart and my forever in life. 💖
-      </p>
-      <button id="nextBtn">Next ➡️</button>
+  <!-- Step 1: Envelope -->
+  <section id="envelope-scene" class="scene">
+    <div class="envelope" id="envelope">
+      <div class="back"></div>
+      <div class="letter" id="letter">
+        <div class="text">
+          <p>
+            My dearest Praps, <br><br>
+            You are the smile in my heart and my forever in life. 💖
+          </p>
+          <button id="toGallery">Next ➡️</button>
+        </div>
+      </div>
+      <div class="front"><span class="for-praps">For my Praps</span></div>
+      <div class="top"></div>
+      <div class="shadow"></div>
     </div>
-  </div>
-  <div class="front">
-    <span class="for-praps">For my Praps</span>
-  </div>
-  <div class="top"></div>
-  <div class="shadow"></div>
-</div>
+  </section>
+
+  <!-- Step 2: Gallery -->
+  <section id="gallery-scene" class="scene hidden">
+    <h2>📸 Our Memories</h2>
+    <div class="gallery">
+      <img src="https://picsum.photos/200/200?random=1" alt="Memory 1">
+      <img src="https://picsum.photos/200/200?random=2" alt="Memory 2">
+      <img src="https://picsum.photos/200/200?random=3" alt="Memory 3">
+    </div>
+    <button id="closeGallery">Next ➡️</button>
+  </section>
+
+  <!-- Step 3: Love Question -->
+  <section id="question-scene" class="scene hidden">
+    <h1>Do you love me? ❤️</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+    <div id="answer" class="hidden">
+      <h2>Hehe I knew it ❤️ Love you too!</h2>
+      <button id="toNight">OK</button>
+    </div>
+  </section>
+
+  <!-- Step 4: Night Sky -->
+  <section id="night-scene" class="scene hidden">
+    <div class="stars"></div>
+    <h2 class="final-text">Forever under the same stars 🌌</h2>
+  </section>
 
   <script src="script.js"></script>
 </body>
