@@ -10,6 +10,9 @@
   <!-- Background Music -->
   <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-love.mp3" loop></audio>
 
+  <!-- Floating hearts background -->
+  <div id="floating-hearts"></div>
+
   <!-- Entry Screen -->
   <div id="entry-screen">
     <button id="heart-button">❤️</button>
@@ -27,8 +30,9 @@
 
   <!-- Love Letter Screen -->
   <div id="letter-screen" class="hidden">
-    <div class="letter-box">
+    <div class="letter-box sparkle">
       <p id="typewriter-text"></p>
+      <span class="cursor">❤️</span>
     </div>
     <button id="gallery-btn">📸 Our Memories</button>
     <button id="surprise-btn">🎁 Tap for a Surprise</button>
@@ -37,22 +41,23 @@
   <!-- Gallery Screen -->
   <div id="gallery-screen" class="hidden">
     <div class="gallery">
-      <img src="https://picsum.photos/200/200?random=1" alt="Memory 1">
-      <img src="https://picsum.photos/200/200?random=2" alt="Memory 2">
-      <img src="https://picsum.photos/200/200?random=3" alt="Memory 3">
+      <div class="polaroid"><img src="https://picsum.photos/200/200?random=1" alt="Memory 1"><p>Memory 1</p></div>
+      <div class="polaroid"><img src="https://picsum.photos/200/200?random=2" alt="Memory 2"><p>Memory 2</p></div>
+      <div class="polaroid"><img src="https://picsum.photos/200/200?random=3" alt="Memory 3"><p>Memory 3</p></div>
     </div>
     <button id="close-gallery">Close</button>
   </div>
 
   <!-- Surprise Screen -->
   <div id="surprise-screen" class="hidden">
-    <h2>💖 You’re my everything 💖</h2>
+    <h2 class="glow">💖 You’re my everything 💖</h2>
   </div>
 
   <!-- Ending Screen -->
   <div id="ending-screen" class="hidden">
-    <h1>Forever Yours 💕</h1>
-    <p>– Your Name</p>
+    <div class="stars"></div>
+    <h1 class="fade-scale">Forever Yours 💕</h1>
+    <p class="fade-scale">– Your Name</p>
   </div>
 
   <script src="script.js"></script>
