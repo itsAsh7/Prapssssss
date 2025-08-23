@@ -57,41 +57,46 @@ body {
 /* Top flap (animated) */
 .top {
   position: absolute;
-  border-top: 100px solid #9163cb;
+  border-top: 105px solid #9163cb;
   border-left: 125px solid transparent;
   border-right: 125px solid transparent;
-  top: 0; left: 0;
-  z-index: 5;
+  top: 0;
   transform-origin: top;
-  transition: transform 0.6s ease;
+  transition: 0.5s;
+  z-index: 4; /* ensure flap is under the letter */
 }
+
 
 /* Letter stays hidden inside */
 .letter {
   position: absolute;
   background: white;
   width: 220px;
-  top: 100%; /* completely hidden */
+  height: auto;
+  top: 60%;   /* pushes it way down */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0);
   padding: 15px;
   border-radius: 8px;
-  transition: top 0.8s ease-in-out, opacity 0.5s ease;
-  z-index: 2;
+  transition: transform 0.8s ease-in-out;
+  z-index: 1; /* below flap */
   color: black;
   font-size: 15px;
   text-align: center;
   opacity: 0;
 }
 
+
 /* Show letter when envelope opens */
 .envelope.open .top {
   transform: rotateX(180deg);
 }
 .envelope.open .letter {
-  top: -20px; /* slide out */
+  top: -40px;   /* pull it way above envelope */
   opacity: 1;
+  z-index: 5;   /* above flaps */
 }
+
 
 /* For my Praps text */
 .for-praps {
