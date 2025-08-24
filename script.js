@@ -48,6 +48,30 @@ closeGallery.addEventListener("click", () => {
   switchScene(galleryScene, questionScene);
 });
 
+// Gallery lightbox
+const galleryImages = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = lightbox.querySelector("img");
+const closeBtn = lightbox.querySelector(".close-btn");
+
+galleryImages.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
+
+
 // Step 4: Question logic
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
