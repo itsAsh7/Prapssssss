@@ -1,14 +1,16 @@
 // Helper: fade switch
 function switchScene(hide, show) {
+  // fade out old scene
   hide.classList.remove("active");
 
+  // after fade-out, hide it completely
   setTimeout(() => {
     hide.style.display = "none";
 
     // prepare new scene
-    show.style.display = "flex"; // flex since .scene is flexbox
+    show.style.display = "flex"; // matches .scene flex layout
     setTimeout(() => show.classList.add("active"), 50);
-  }, 600); // matches CSS transition
+  }, 1000); // matches CSS transition (1s)
 }
 
 // Step 1: Envelope → open
