@@ -234,6 +234,10 @@ body {
 #night-scene.active .bg-video {
   opacity: 1;   /* fades in when scene is active */
 }
+.bg-video {
+  opacity: 1 !important;
+}
+
 
 #night-scene .final-text {
   position: absolute;
