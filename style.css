@@ -202,15 +202,17 @@ body {
 }
 
 /* Enlarged image */
+/* Lightbox overrides — stronger than gallery rules */
 #lightbox img {
-  max-width: 60vw;   /* 60% of viewport width */
-  max-height: 60vh;  /* 60% of viewport height */
-  width: auto;       /* override gallery fixed width */
-  height: auto;      /* override gallery fixed height */
+  width: auto !important;       /* override fixed gallery width */
+  height: auto !important;      /* override fixed gallery height */
+  max-width: 60vw !important;   /* 60% of viewport width */
+  max-height: 60vh !important;  /* 60% of viewport height */
   border-radius: 15px;
   box-shadow: 0 0 30px rgba(255,75,110,0.8);
   animation: zoomIn 0.6s ease;
 }
+
 
 /* Close button */
 #lightbox .close-btn {
