@@ -203,12 +203,13 @@ body {
 
 /* Enlarged image */
 #lightbox img {
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 20px;
-  border: 3px solid rgba(255,255,255,0.7);
-  box-shadow: 0 0 25px rgba(255,75,110,0.9), 0 0 50px rgba(255,75,110,0.5);
-  animation: zoomIn 0.4s ease;
+  max-width: 60vw;   /* 60% of viewport width */
+  max-height: 60vh;  /* 60% of viewport height */
+  width: auto;       /* override gallery fixed width */
+  height: auto;      /* override gallery fixed height */
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255,75,110,0.8);
+  animation: zoomIn 0.6s ease;
 }
 
 /* Close button */
@@ -219,6 +220,11 @@ body {
   color: white;
   cursor: pointer;
   text-shadow: 0 0 10px #ff4b6e;
+}
+
+#lightbox img:hover {
+  transform: scale(1.05);   /* slightly zoom in */
+  transition: transform 0.4s ease;
 }
 
 /* Animation */
