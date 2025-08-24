@@ -121,17 +121,72 @@ body {
 .letter button:hover { background: #e6375c; }
 
 /* Gallery */
-#gallery-scene { background: #222; }
-.gallery { display: flex; gap: 10px; margin: 20px; }
-.gallery img {
-  width: 150px; height: 150px;
-  object-fit: cover;
-  border: 3px solid white;
-  border-radius: 10px;
-  transition: transform 0.3s;
+/* Gallery Scene with Flowing Gradient + Sparkles */
+#gallery-scene {
+  position: relative;
+  background: linear-gradient(135deg, #1a0033, #2b0040, #440044);
+  background-size: 400% 400%;
+  animation: galleryFlow 18s ease infinite;
+  overflow: hidden;
 }
-.gallery img:hover { transform: scale(1.1) rotate(2deg); }
-#gallery-scene button { margin-top: 20px; }
+
+@keyframes galleryFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Sparkle overlay */
+#gallery-scene::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("https://i.ibb.co/jv0p4Pr/sparkles.png") repeat;
+  opacity: 0.1;
+  animation: moveSparkles 60s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveSparkles {
+  from { background-position: 0 0; }
+  to { background-position: 0 -1500px; }
+}
+
+/* Gallery Layout */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 80%;
+  position: relative;
+  z-index: 1; /* keep above sparkles */
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 0 15px rgba(255, 75, 110, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 0 25px rgba(255, 75, 110, 0.9);
+}
+
+/* Heading & Button above sparkles */
+#gallery-scene h2,
+#gallery-scene button {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px #ff4b6e;
+}
+
 
 /* Question */
 /* Question Scene with Gradient + Floating Hearts */
