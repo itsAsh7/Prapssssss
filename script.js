@@ -69,3 +69,26 @@ const toNight = document.getElementById("toNight");
 toNight.addEventListener("click", () => {
   switchScene(questionScene, nightScene);
 });
+
+// Grab the audio elements
+const bgMusic1 = document.getElementById("bgMusic1");
+const bgMusic2 = document.getElementById("bgMusic2");
+
+// Start music1 right away when the page loads
+window.addEventListener("load", () => {
+  bgMusic1.volume = 0.5; // softer
+  bgMusic1.play().catch(err => console.log("Autoplay blocked:", err));
+});
+
+// When clicking "OK" to go to night scene → switch music
+toNight.addEventListener("click", () => {
+  switchScene(questionScene, nightScene);
+
+  // Stop intro music
+  bgMusic1.pause();
+  bgMusic1.currentTime = 0;
+
+  // Start night music
+  bgMusic2.volume = 0.6;
+  bgMusic2.play().catch(err => console.log("Autoplay blocked:", err));
+});
