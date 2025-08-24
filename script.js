@@ -1,3 +1,12 @@
+function switchScene(hide, show) {
+  hide.classList.remove("active");
+  setTimeout(() => {
+    hide.classList.add("hidden"); 
+    show.classList.remove("hidden");
+    setTimeout(() => show.classList.add("active"), 50);
+  }, 600); // matches CSS transition
+}
+
 // Step 1: Envelope → open
 const envelope = document.getElementById("envelope");
 envelope.addEventListener("click", () => {
