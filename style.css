@@ -229,7 +229,13 @@ body {
   font-size: 2.5rem;
   color: #fff;
   text-shadow: 0 0 20px #ff4b6e, 0 0 40px #ff4b6e;
-  animation: fadeIn 3s ease forwards;
+  opacity: 0;
+  animation: fadeInText 3s ease forwards 1.5s; /* delay for drama */
 }
+
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+
 
 
