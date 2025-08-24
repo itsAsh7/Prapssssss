@@ -66,29 +66,37 @@ noBtn.addEventListener("mousemove", (e) => {
 
 // Step 5: Answer "OK" → Night sky
 const toNight = document.getElementById("toNight");
+
+// Helper: fade audio
+function fadeAudio(audio, from, to, duration, callback) {
+  let step = (to - from) / (duration / 100);
+  let vol = from;
+  let interval = setInterval(() => {
+    vol += step;
+    if ((step < 0 && vol <= to) || (step > 0 && vol >= to)) {
+      vol = to;
+      clearInterval(interval);
+      if (callback) callback();
+    }
+    audio.volume = Math.max(0, Math.min(1, vol));
+  }, 100);
+}
+
 toNight.addEventListener("click", () => {
-  switchScene(questionScene, nightScene);
-});
-
-// Grab the audio elements
-const bgMusic1 = document.getElementById("bgMusic1");
-const bgMusic2 = document.getElementById("bgMusic2");
-
-// Start music1 right away when the page loads
-window.addEventListener("load", () => {
-  bgMusic1.volume = 0.5; // softer
-  bgMusic1.play().catch(err => console.log("Autoplay blocked:", err));
-});
-
-// When clicking "OK" to go to night scene → switch music
-toNight.addEventListener("click", () => {
+  // Switch scenes visually
   switchScene(questionScene, nightScene);
 
-  // Stop intro music
-  bgMusic1.pause();
-  bgMusic1.currentTime = 0;
+  // Fade out music1 over 2s
+  fadeAudio(bgMusic1, bgMusic1.volume, 0, 2000, () => {
+    bgMusic1.pause();
+    bgMusic1.currentTime = 0;
+  });
 
-  // Start night music
-  bgMusic2.volume = 0.6;
-  bgMusic2.play().catch(err => console.log("Autoplay blocked:", err));
+  // After 1 second silence → fade in music2 over 3s
+  setTimeout(() => {
+    bgMusic2.volume = 0;
+    bgMusic2.play().catch(err => console.log("Autoplay blocked:", err));
+    fadeAudio(bgMusic2, 0, 0.6, 3000);
+  }, 1000);
 });
+
