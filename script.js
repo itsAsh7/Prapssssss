@@ -8,10 +8,13 @@ envelope.addEventListener("click", () => {
 const toGallery = document.getElementById("toGallery");
 const envelopeScene = document.getElementById("envelope-scene");
 const galleryScene = document.getElementById("gallery-scene");
-toGallery.addEventListener("click", () => {
+
+toGallery.addEventListener("click", (e) => {
+  e.stopPropagation(); // stop the envelope click
   envelopeScene.classList.add("hidden");
   galleryScene.classList.remove("hidden");
 });
+
 
 // Step 3: Gallery "Next" → Question
 const closeGallery = document.getElementById("closeGallery");
