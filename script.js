@@ -69,41 +69,57 @@
   const bgMusic1 = document.getElementById("bgMusic1");
   const bgMusic2 = document.getElementById("bgMusic2");
   
-  // Helper: simple fade-out
-  function fadeOut(audio, duration, callback) {
-    let vol = audio.volume;
-    let step = vol / (duration / 100);
-    let interval = setInterval(() => {
-      vol -= step;
-      if (vol <= 0) {
-        vol = 0;
-        clearInterval(interval);
-        audio.pause();
-        audio.currentTime = 0;
-        if (callback) callback();
-      }
-      audio.volume = vol;
-    }, 100);
-  }
-  
-  // Start music1 on load
-  window.addEventListener("load", () => {
-    bgMusic1.volume = 0.6;
-    bgMusic1.play().catch(err => console.log("Autoplay blocked:", err));
+ // Helper: simple fade-out
+function fadeOut(audio, duration, callback) {
+  let vol = audio.volume;
+  let step = vol / (duration / 100);
+  let interval = setInterval(() => {
+    vol -= step;
+    if (vol <= 0) {
+      vol = 0;
+      clearInterval(interval);
+      audio.pause();
+      audio.currentTime = 0;
+      if (callback) callback();
+    }
+    audio.volume = vol;
+  }, 100);
+}
+
+// Helper: simple fade-in
+function fadeIn(audio, target, duration) {
+  audio.volume = 0;
+  audio.play().catch(err => console.log("Autoplay blocked:", err));
+  let step = target / (duration / 100);
+  let vol = 0;
+  let interval = setInterval(() => {
+    vol += step;
+    if (vol >= target) {
+      vol = target;
+      clearInterval(interval);
+    }
+    audio.volume = vol;
+  }, 100);
+}
+
+// Start music1 on load
+window.addEventListener("load", () => {
+  bgMusic1.volume = 0.6;
+  bgMusic1.play().catch(err => console.log("Autoplay blocked:", err));
+});
+
+toNight.addEventListener("click", () => {
+  // Switch scene
+  switchScene(questionScene, nightScene);
+
+  // Fade out music1 in 1s
+  fadeOut(bgMusic1, 1000, () => {
+    // After 1s silence, fade in music2 over 1s
+    setTimeout(() => {
+      fadeIn(bgMusic2, 0.6, 1000);
+    }, 1000);
   });
-  
-  toNight.addEventListener("click", () => {
-    // Switch scene
-    switchScene(questionScene, nightScene);
-  
-    // Fade out music1 in 1s
-    fadeOut(bgMusic1, 1000, () => {
-      // After 1s silence, start music2 instantly
-      setTimeout(() => {
-        bgMusic2.volume = 0.6;
-        bgMusic2.play().catch(err => console.log("Autoplay blocked:", err));
-      }, 1000);
-    });
-  });
+});
+
   
   
