@@ -8,53 +8,45 @@ body {
   color: white;
 }
 .hidden { display: none; }
-.scene { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.scene {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Envelope */
-.envelope {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-}
-
+.envelope { position: relative; cursor: pointer; }
 .back {
   width: 250px;
-  height: 200px; /* back to smaller so letter hides */
+  height: 250px;
   background: #6247aa;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
-  border-radius: 0 0 6px 6px;
 }
-
 .front {
   position: absolute;
   border-right: 130px solid #815ac0;
   border-top: 100px solid transparent;
   border-bottom: 100px solid transparent;
-  height: 0; width: 0;
-  top: 0; left: 120px;
-  z-index: 3;
+  height: 0; width: 0; top: 0; left: 120px; z-index: 3;
 }
 .front:before {
-  content: "";
-  position: absolute;
+  content: ""; position: absolute;
   border-left: 130px solid #815ac0;
   border-top: 100px solid transparent;
   border-bottom: 100px solid transparent;
   top: -100px; left: -120px;
 }
 .front:after {
-  content: "";
-  position: absolute;
-  border-bottom: 100px solid #7251b5;
+  content: ""; position: absolute;
+  border-bottom: 105px solid #7251b5;
   border-left: 125px solid transparent;
   border-right: 125px solid transparent;
-  top: 0; left: -120px;
-  z-index: 4;
+  top: -5px; left: -120px;
 }
-
-/* Top flap (animated) */
 .top {
   position: absolute;
   border-top: 105px solid #9163cb;
@@ -62,58 +54,46 @@ body {
   border-right: 125px solid transparent;
   top: 0;
   transform-origin: top;
-  transition: 0.5s;
-  z-index: 4; /* ensure flap is under the letter */
+  transition: 0.6s ease;
+  z-index: 4;
 }
-
-
-/* Letter hidden inside envelope */
 .letter {
   position: absolute;
   background: white;
   width: 220px;
   height: auto;
-  top: 100%;   /* start fully inside */
+  top: 100%; /* fully hidden inside */
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 15px;
   border-radius: 8px;
-  transition: top 0.8s ease-in-out, opacity 0.5s;
+  transition: top 0.8s ease-in-out, opacity 0.6s;
   z-index: 1;
   color: black;
   font-size: 15px;
   text-align: center;
   opacity: 0;
 }
-
-/* When envelope opens */
-.envelope.open .top {
-  transform: rotateX(180deg);
-}
+.envelope.open .top { transform: rotateX(180deg); }
 .envelope.open .letter {
-  top: -40px;   /* slides up out of envelope */
+  top: -40px;   /* slides out */
   opacity: 1;
   z-index: 5;
 }
 
-
-/* For my Praps text */
 .for-praps {
   display: block;
-  margin-top: 15px; /* small gap below envelope */
+  margin-top: 15px;
   font-family: 'Great Vibes', cursive;
   font-size: 28px;
   color: #fff;
   text-shadow: 0 0 6px #ff4b6e, 0 0 12px #ff4b6e;
   animation: fadeIn 1.2s ease-in-out;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-
 
 .letter button {
   margin-top: 10px;
@@ -154,9 +134,8 @@ body {
   background: #f44336;
   color: white;
   position: relative;
-  transition: transform 0.3s ease; /* smooth runaway */
+  transition: transform 0.3s ease;
 }
-
 
 /* Answer */
 #answer { margin-top: 20px; }
