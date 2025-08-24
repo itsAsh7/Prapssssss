@@ -1,17 +1,15 @@
+// Helper: fade switch
 function switchScene(hide, show) {
-  // fade out old scene
   hide.classList.remove("active");
 
-  // after fade, hide it completely
   setTimeout(() => {
     hide.style.display = "none";
 
     // prepare new scene
-    show.style.display = "flex"; // matches .scene flex layout
+    show.style.display = "flex"; // flex since .scene is flexbox
     setTimeout(() => show.classList.add("active"), 50);
   }, 600); // matches CSS transition
 }
-
 
 // Step 1: Envelope → open
 const envelope = document.getElementById("envelope");
@@ -26,6 +24,7 @@ const questionScene = document.getElementById("question-scene");
 const nightScene = document.getElementById("night-scene");
 
 // Initialize first scene as active
+envelopeScene.style.display = "flex";
 envelopeScene.classList.add("active");
 
 // Step 2: Letter "Next" → Gallery
