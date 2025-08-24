@@ -1,7 +1,8 @@
+// Helper: fade switch
 function switchScene(hide, show) {
   hide.classList.remove("active");
   setTimeout(() => {
-    hide.classList.add("hidden"); 
+    hide.classList.add("hidden");
     show.classList.remove("hidden");
     setTimeout(() => show.classList.add("active"), 50);
   }, 600); // matches CSS transition
@@ -13,24 +14,26 @@ envelope.addEventListener("click", () => {
   envelope.classList.add("open");
 });
 
-// Step 2: Letter "Next" → Gallery
-const toGallery = document.getElementById("toGallery");
+// Scenes
 const envelopeScene = document.getElementById("envelope-scene");
 const galleryScene = document.getElementById("gallery-scene");
+const questionScene = document.getElementById("question-scene");
+const nightScene = document.getElementById("night-scene");
 
+// Initialize first scene as active
+envelopeScene.classList.add("active");
+
+// Step 2: Letter "Next" → Gallery
+const toGallery = document.getElementById("toGallery");
 toGallery.addEventListener("click", (e) => {
-  e.stopPropagation(); // stop the envelope click
-  envelopeScene.classList.add("hidden");
-  galleryScene.classList.remove("hidden");
+  e.stopPropagation(); // prevent triggering envelope again
+  switchScene(envelopeScene, galleryScene);
 });
-
 
 // Step 3: Gallery "Next" → Question
 const closeGallery = document.getElementById("closeGallery");
-const questionScene = document.getElementById("question-scene");
 closeGallery.addEventListener("click", () => {
-  galleryScene.classList.add("hidden");
-  questionScene.classList.remove("hidden");
+  switchScene(galleryScene, questionScene);
 });
 
 // Step 4: Question logic
@@ -57,8 +60,6 @@ noBtn.addEventListener("mousemove", (e) => {
 
 // Step 5: Answer "OK" → Night sky
 const toNight = document.getElementById("toNight");
-const nightScene = document.getElementById("night-scene");
 toNight.addEventListener("click", () => {
-  questionScene.classList.add("hidden");
-  nightScene.classList.remove("hidden");
+  switchScene(questionScene, nightScene);
 });
