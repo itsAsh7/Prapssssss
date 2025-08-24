@@ -143,6 +143,7 @@ body {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: url("sparkles.png") repeat;
+  background-size: 100px 100px; /* shrink sparkles */
   opacity: 0.1;
   animation: moveSparkles 60s linear infinite;
   z-index: 0;
@@ -211,6 +212,7 @@ body {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: url("hearts.png") repeat;
+  background-size: 80px 80px; /* shrink pattern */
   opacity: 0.12;
   animation: moveHearts 40s linear infinite;
   z-index: 0;
